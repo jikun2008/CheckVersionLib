@@ -93,7 +93,7 @@ class NotificationHelper(private val context: Context) {
             //设置intent的类型
             i.setDataAndType(uri,
                     "application/vnd.android.package-archive")
-            val pendingIntent = PendingIntent.getActivity(context, 0, i, 0)
+            val pendingIntent = PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_IMMUTABLE)
             notification?.let {
                 it.setContentIntent(pendingIntent)
                 it.setContentText(context.getString(R.string.versionchecklib_download_finish))
