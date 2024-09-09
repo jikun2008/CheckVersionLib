@@ -52,7 +52,12 @@ class VersionService : Service() {
             val intent = Intent(context, VersionService::class.java)
             //显示通知栏的情况 才设置为前台服务
             if (builder.isRunOnForegroundService && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                context.startForegroundService(intent)
+                if(Build.VERSION.SDK_INT >=34){
+                    //这里是Android 14需要去请求
+                    context.startForegroundService(intent)
+                }else{
+                    context.startForegroundService(intent)
+                }
             } else {
                 context.startService(intent)
             }
