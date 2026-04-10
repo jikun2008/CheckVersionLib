@@ -114,7 +114,7 @@ class NotificationHelper(private val context: Context) {
                 notification?.let {
                     val intent = Intent(context, PermissionDialogActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                    val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
                     it.setContentIntent(pendingIntent)
                     it.setContentText(context.getString(R.string.versionchecklib_download_fail))
                     it.setProgress(100, 0, false)
